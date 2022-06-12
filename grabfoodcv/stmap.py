@@ -31,19 +31,19 @@ fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.update_geos(fitbounds="locations", visible=False)
 fig.update(layout_coloraxis_showscale=False)
 c1,c2 = st.columns((1,1))
-with c1:
-  st.plotly_chart(fig)
-with c2:
-  import plotly.graph_objects as go
-  line=df['bulan'].tolist()
+# with c1:
+st.plotly_chart(fig)
+# with c2:
+import plotly.graph_objects as go
+line=df['tanggal'].tolist()
 
-  fig = go.Figure(data=[
-      go.Bar(name='Inflow', x=line, y=df['Inflow']),
-      go.Bar(name='Ouflow', x=line, y=df['Outflow2'])
-  ])
-  # Change the bar mode
-  fig.update_layout(barmode='group')
-  
+fig = go.Figure(data=[
+    go.Bar(name=line, x=line, y=df['Demand']),
+    go.Bar(name=line, x=line, y=df['Local_stock'])
+])
+# Change the bar mode
+fig.update_layout(barmode='group')
+
 #   df['tanggal'] = df['tanggal'].astype('str')
 #   fig = px.bar(df,x= 'tanggal', y='Wasted', color='bulan', barmode="group")
-  st.plotly_chart(fig)
+st.plotly_chart(fig)
