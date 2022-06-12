@@ -6,8 +6,8 @@ import geopandas as gpd
 from geojson_rewind import rewind
 import streamlit as st
 
-# f = gpd.read_file('jakarta.shp')
-f = gpd.read_file('/grabfoodcv/jakarta.geojson')
+f = gpd.read_file('./grabfoodcv/jakarta.shp')
+# f = gpd.read_file('/grabfoodcv/jakarta.geojson')
 geo_ur = json.loads(f.to_json())
 map = rewind(geo_ur,rfc7946=False)
 
@@ -15,7 +15,7 @@ map = rewind(geo_ur,rfc7946=False)
 # map = json.load('/content/drive/MyDrive/Hackathon/jakarta.geojson')
 # map = json.load(response)
 # dfall = pd.read_csv('/content/drive/MyDrive/Hackathon/jakarta.csv',dtype={"fips": str},sep=",")
-dfall = pd.read_csv('/grabfoodcv/data_jakarta.csv',dtype={"fips": str},sep=";")
+dfall = pd.read_csv('./grabfoodcv/data_jakarta.csv',dtype={"fips": str},sep=";")
 df = dfall[dfall['GID_2']!='IDN.7.6_1']
 
 st.subheader('Regional Demand per Month')
