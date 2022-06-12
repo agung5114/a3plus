@@ -34,5 +34,6 @@ c1,c2 = st.columns((1,1))
 with c1:
   st.plotly_chart(fig)
 with c2:
-  fig = px.bar(x= 'tanggal', y='Wasted', color='bulan', barmode='stack')
+  df['tanggal'] = df['tanggal'].astype('str')
+  fig = px.bar(x= 'tanggal', y='Wasted', color='bulan', barmode="group")
   st.plotly_chart(fig)
