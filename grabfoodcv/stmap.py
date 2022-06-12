@@ -30,4 +30,9 @@ fig = px.choropleth(df_sel, geojson=map, locations='GID_4', color='Demand',
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.update_geos(fitbounds="locations", visible=False)
 fig.update(layout_coloraxis_showscale=False)
-st.plotly_chart(fig)
+c1,c2 = st.columns((1,1))
+with c1:
+  st.plotly_chart(fig)
+with c2:
+  fig = px.bar(x= 'tanggal', y='Wasted', color='bulan', barmode='stack')
+  st.plotly_chart(fig)
