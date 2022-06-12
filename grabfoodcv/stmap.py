@@ -7,7 +7,7 @@ from geojson_rewind import rewind
 import streamlit as st
 
 # f = gpd.read_file('jakarta.shp')
-f = gpd.read_file('jakarta.geojson')
+f = gpd.read_file('grabfoodcv/jakarta.geojson')
 geo_ur = json.loads(f.to_json())
 map = rewind(geo_ur,rfc7946=False)
 
