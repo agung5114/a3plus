@@ -39,7 +39,7 @@ with c2:
 
   fig = go.Figure(data=[
       go.Bar(name='Inflow', x=line, y=df['Inflow']),
-      go.Bar(name='Ouflow', x=line, y=df['Outflow'])
+      go.Bar(name='Ouflow', x=line, y=df['Outflow2'])
   ])
   # Change the bar mode
   fig.update_layout(barmode='group')
