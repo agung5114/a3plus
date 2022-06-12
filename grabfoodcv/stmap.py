@@ -45,5 +45,5 @@ st.plotly_chart(fig)
 # fig.update_layout(barmode='group')
 
 # df['tanggal'] = df['tanggal'].astype('date')
-fig = px.line(df,x= 'tanggal', y='Wasted')
+fig = px.line(df,x= 'nama_kecamatan', y='Demand')
 st.plotly_chart(fig)
