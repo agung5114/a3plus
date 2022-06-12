@@ -1,3 +1,7 @@
+geopandas 
+geojson-rewind
+plotly==4.5.1
+plotly-express
 absl-py==0.13.0
 altair==4.1.0
 argon2-cffi==21.1.0
