@@ -5,6 +5,12 @@ import json
 import geopandas as gpd
 from geojson_rewind import rewind
 import streamlit as st
+st.set_page_config(
+     page_title="Demand Mapping",
+     page_icon="🧊",
+     layout="wide",
+     initial_sidebar_state="expanded"
+ )
 
 # f = gpd.read_file('./grabfoodcv/jakarta.shp')
 f = gpd.read_file('./grabfoodcv/jakarta.geojson')
