@@ -22,7 +22,7 @@ st.subheader('Regional Demand per Month')
 option = st.selectbox('Select Month', df['bulan'].unique())
 
 df_sel = df[df['bulan']==option]
-fig = px.choropleth(df_sel, geojson=map, locations='GID_4', color='POSITIF',
+fig = px.choropleth(df_sel, geojson=map, locations='GID_4', color='Demand',
                       featureidkey="properties.GID_4",
                       color_discrete_sequence=None, 
                       color_discrete_map={},
