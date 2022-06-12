@@ -34,6 +34,16 @@ c1,c2 = st.columns((1,1))
 with c1:
   st.plotly_chart(fig)
 with c2:
-  df['tanggal'] = df['tanggal'].astype('str')
-  fig = px.bar(df,x= 'tanggal', y='Wasted', color='bulan', barmode="group")
+  import plotly.graph_objects as go
+  line=df['bulan'].tolist()
+
+  fig = go.Figure(data=[
+      go.Bar(name='Inflow', x=line, y=df['Inflow']),
+      go.Bar(name='Ouflow', x=line, y=df['Outflow'])
+  ])
+  # Change the bar mode
+  fig.update_layout(barmode='group')
+  
+#   df['tanggal'] = df['tanggal'].astype('str')
+#   fig = px.bar(df,x= 'tanggal', y='Wasted', color='bulan', barmode="group")
   st.plotly_chart(fig)
