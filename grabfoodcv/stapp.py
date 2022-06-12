@@ -76,7 +76,7 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-model = tensorflow.keras.models.load_model('model/grabcv.h5')
+model = tensorflow.keras.models.load_model('model/grabcv.pb')
 food = ['beefburger','beefcurry','friedchicken','lambskewer','panacota','springsalad']
 
 def getPrediction(data,model):
