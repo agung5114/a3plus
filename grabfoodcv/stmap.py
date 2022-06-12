@@ -31,19 +31,19 @@ fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.update_geos(fitbounds="locations", visible=False)
 fig.update(layout_coloraxis_showscale=False)
 c1,c2 = st.columns((1,1))
-# with c1:
-st.plotly_chart(fig)
-# with c2:
-# import plotly.graph_objects as go
-# line=df['tanggal'].tolist()
+with c1:
+  st.plotly_chart(fig)
+  # with c2:
+  # import plotly.graph_objects as go
+  # line=df['tanggal'].tolist()
 
-# fig = go.Figure(data=[
-#     go.Bar(name=line, x=line, y=df['Demand']),
-#     go.Bar(name=line, x=line, y=df['Local_stock'])
-# ])
-# # Change the bar mode
-# fig.update_layout(barmode='group')
-
-# df['tanggal'] = df['tanggal'].astype('date')
-fig = px.bar(df,x= 'nama_kecamatan', y='Demand')
-st.plotly_chart(fig)
+  # fig = go.Figure(data=[
+  #     go.Bar(name=line, x=line, y=df['Demand']),
+  #     go.Bar(name=line, x=line, y=df['Local_stock'])
+  # ])
+  # # Change the bar mode
+  # fig.update_layout(barmode='group')
+with c2:
+  # df['tanggal'] = df['tanggal'].astype('date')
+  fig = px.bar(df,x= 'nama_kecamatan', y='Demand')
+  st.plotly_chart(fig)
