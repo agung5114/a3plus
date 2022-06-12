@@ -1,4 +1,4 @@
-# a3plus
+# a3plus - GrabDCU
 
 Our solution for GrabForGood HAckathon consist of two apps, with the main app (grabdcu) providing features for the user, 
 while the other one (grabfoodcv) focus on the use of machine learning to handle complex problems and performing analytics
