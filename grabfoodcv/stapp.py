@@ -57,39 +57,35 @@ def getPrediction(data,model):
 
 # st.set_page_config(layout='wide')
 
-def main():
-    st.subheader("Heal - Food Analyzer")
-    with st.expander('Open Camera'):
-        data1 = st.camera_input('')
-    with st.expander('Upload A Photo'):
-        data2 = st.file_uploader('')
+# def main():
+st.subheader("Heal - Food Analyzer")
+with st.expander('Open Camera'):
+data1 = st.camera_input('')
+with st.expander('Upload A Photo'):
+data2 = st.file_uploader('')
 
-    if data1 != None:
-        data = data1
-    elif data2 != None:
-        data = data2
-    else:
-        data = None
+if data1 != None:
+data = data1
+elif data2 != None:
+data = data2
+else:
+data = None
 
-    if data == None:
-        st.write('Please Upload Photo of Food')
-    else:
-        img = Image.open(data)
-        newsize = (280, 230)
-        image = img.resize(newsize)
-        st.image(image)
+if data == None:
+st.write('Please Upload Photo of Food')
+else:
+img = Image.open(data)
+newsize = (280, 230)
+image = img.resize(newsize)
+st.image(image)
 
 #     if st.button('Jalankan Prediksi'):
-        hasil = getPrediction(data,model)
-        hasil = hasil[['Food','Probability']]
-        hasil.set_index('Food', inplace=True)
-        st.table(hasil)
-        # st.write(f'prediction: {hasil}')
-        st.write(hasil.index[0].upper())
+hasil = getPrediction(data,model)
+hasil = hasil[['Food','Probability']]
+hasil.set_index('Food', inplace=True)
+st.table(hasil)
+# st.write(f'prediction: {hasil}')
+st.write(hasil.index[0].upper())
 
-
-
-        
-
-if __name__=='__main__':
-    main()
+# if __name__=='__main__':
+#     main()
