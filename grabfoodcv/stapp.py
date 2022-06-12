@@ -5,7 +5,6 @@ import numpy as np
 from PIL import Image
 import streamlit.components.v1 as components
 # import matplotlib.pyplot as plt
-import tensorflow
 from tensorflow import keras
 import joblib
 import operator
@@ -30,7 +29,7 @@ st.markdown(hide_table_row_index, unsafe_allow_html=True)
 # Display a static table
 
 def searchLink(foodname):
-    search = gsearch(f"{foodname} site=allrecipes.com",1)
+    search = gsearch(f"{foodname} site=allrecipes.com -allrecipes.com/recipes  -allrecipes.com/gallery",1)
     result1 = str(search.results[0])
     text = result1.split("link=",1)[1]
     link = text.split(">",1)[0]
@@ -53,8 +52,8 @@ def scrapeRecipe(url):
 
     instructions = scraper.instructions()
     # links = scraper.links()
-    # nutrients = scraper.nutrients()
-    return {'ingredient':ingredient,'ingredients':ingredients,'instructions':instructions}
+    nutrients = scraper.nutrients()
+    return {'ingredient':ingredient,'ingredients':ingredients,'instructions':instructions,'nutrients':nutrients}
 
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
@@ -76,7 +75,7 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-model = tensorflow.keras.models.load_model('model/grabcv.pb')
+model = keras.models.load_model('model/grabcv.h5')
 food = ['beefburger','beefcurry','friedchicken','lambskewer','panacota','springsalad']
 
 def getPrediction(data,model):
@@ -105,7 +104,7 @@ def getPrediction(data,model):
 # st.set_page_config(layout='wide')
 
 # def main():
-st.subheader("Heal - Food Analyzer")
+st.subheader("Food Ai Vision")
 with st.expander('Open Camera'):
     data1 = st.camera_input('')
 with st.expander('Upload A Photo'):
@@ -132,17 +131,21 @@ else:
         hasil = getPrediction(data,model)
         hasil = hasil[['Food','Probability']]
         hasil.set_index('Food', inplace=True)
-        st.table(hasil)
+        st.write('Prediction')
+        st.dataframe(hasil)
     # st.write(f'prediction: {hasil}')
     predicted = hasil.index[0]
-    st.write(predicted.upper())
     link = searchLink(predicted)
-    st.write(link)
     recipe = scrapeRecipe(link)
+    
+    st.write(predicted.upper())
+    st.write(link)
     st.write('Ingredients')
     st.table(recipe['ingredients'])
     st.write('Instructions')
     st.write(recipe['instructions'])
+    nutrisi=recipe['nutrients']
+    st.write(f'Nutrients:{nutrisi}')
 
 # if __name__=='__main__':
 #     main()
