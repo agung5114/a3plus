@@ -36,9 +36,14 @@ fig = px.choropleth(df_sel, geojson=map, locations='GID_4', color='Demand',
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.update_geos(fitbounds="locations", visible=False)
 fig.update(layout_coloraxis_showscale=False)
-c1,c2 = st.columns((1,1))
-with c1:
-  st.plotly_chart(fig)
+
+fig1 = px.bar(df,x= 'nama_kecamatan', y='Demand')
+st.plotly_chart(fig1)
+
+st.plotly_chart(fig)
+# c1,c2 = st.columns((1,1))
+# with c1:
+  
   # with c2:
   # import plotly.graph_objects as go
   # line=df['tanggal'].tolist()
@@ -49,7 +54,5 @@ with c1:
   # ])
   # # Change the bar mode
   # fig.update_layout(barmode='group')
-with c2:
-  # df['tanggal'] = df['tanggal'].astype('date')
-  fig = px.bar(df,x= 'nama_kecamatan', y='Demand')
-  st.plotly_chart(fig)
+# with c2:
+  # df['tanggal'] = df['tanggal'].astype('date'))
