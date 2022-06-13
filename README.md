@@ -32,3 +32,9 @@ For the API swagger
   4. The API will run on port 5000 if you run it on local;
   5. The API Specification could be accessed on localhost:5000/apidocs.
 As for the deployed online app, it can be accessed at: http://contoh-rest.herokuapp.com/apidocs
+
+We also provide android application viewer to access the grabdcu main application
+simply follow the steps below:
+  1. download grabdcu.apk file
+  2. install the app to your android phone/ tablet
+  3. open the app
