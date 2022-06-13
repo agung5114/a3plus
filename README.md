@@ -36,5 +36,6 @@ As for the deployed online app, it can be accessed at: http://contoh-rest.heroku
 We also provide android application viewer to access the grabdcu main application
 simply follow the steps below:
   1. download grabdcu.apk file
-  2. install the app to your android phone/ tablet
-  3. open the app
+  2. open the file to install it to your android phone/ tablet 
+     ensure that install from unknown source is enabled
+  4. open the app
