@@ -12,16 +12,17 @@ st.set_page_config(
      initial_sidebar_state="expanded"
  )
 
-# f = gpd.read_file('./grabfoodcv/jakarta.shp')
 f = gpd.read_file('./grabfoodcv/jakarta.geojson')
 geo_ur = json.loads(f.to_json())
 map = rewind(geo_ur,rfc7946=False)
 
-# map = gpd.read_file('/content/drive/MyDrive/Hackathon/jakarta.geojson')
-# map = json.load('/content/drive/MyDrive/Hackathon/jakarta.geojson')
-# map = json.load(response)
-# dfall = pd.read_csv('/content/drive/MyDrive/Hackathon/jakarta.csv',dtype={"fips": str},sep=",")
-dfall = pd.read_csv('./grabfoodcv/demand_jakarta.csv',dtype={"fips": str},sep=",")
+@st.cache
+def fetch_data(url):
+     data = pd.read_csv(url,dtype={"fips": str},sep=",")
+     return data
+
+dfall = fetch_data('./grabfoodcv/demand_jakarta.csv')
+# dfall = pd.read_csv('./grabfoodcv/demand_jakarta.csv',dtype={"fips": str},sep=",")
 df = dfall[dfall['GID_2']!='IDN.7.6_1']
 
 st.subheader('Regional Demand per Month')
