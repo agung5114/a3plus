@@ -1,4 +1,5 @@
-#geopandas>=0.9.0
+fiona
+geopandas>=0.9.0
 geoplot>=0.4.4
 pint>=0.11
 shapely>=1.8.0
@@ -15,7 +16,7 @@ pygraphviz
 #bottleneck
 #rioxarray
 #cartopy
-geopandas 
+#geopandas 
 geojson-rewind
 plotly==4.5.1
 plotly-express
