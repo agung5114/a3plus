@@ -45,12 +45,6 @@ if menu=='Demand_map':
      fig.update_geos(fitbounds="locations", visible=False)
      fig.update(layout_coloraxis_showscale=False)
      st.plotly_chart(fig)
-     # c1,c2 = st.columns((1,1))
-     # with c1:
-     #      fig1 = px.bar(df,x= 'nama_kecamatan', y='Demand')
-     #      st.plotly_chart(fig1)
-     # with c2:
-     #      st.plotly_chart(fig)
 else:
      st.write('hello')
 
