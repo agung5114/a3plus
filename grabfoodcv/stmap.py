@@ -37,12 +37,13 @@ fig = px.choropleth(df_sel, geojson=map, locations='GID_4', color='Demand',
 fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
 fig.update_geos(fitbounds="locations", visible=False)
 fig.update(layout_coloraxis_showscale=False)
-c1,c2 = st.columns((1,1))
-with c1:
-     fig1 = px.bar(df,x= 'nama_kecamatan', y='Demand')
-     st.plotly_chart(fig1)
-with c2:
-     st.plotly_chart(fig)
+st.plotly_chart(fig)
+# c1,c2 = st.columns((1,1))
+# with c1:
+#      fig1 = px.bar(df,x= 'nama_kecamatan', y='Demand')
+#      st.plotly_chart(fig1)
+# with c2:
+#      st.plotly_chart(fig)
 
   
   # with c2:
