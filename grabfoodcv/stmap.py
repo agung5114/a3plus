@@ -21,40 +21,36 @@ def fetch_data(url):
      data = pd.read_csv(url,dtype={"fips": str},sep=",")
      return data
 
-dfall = fetch_data('./grabfoodcv/demand_jakarta.csv')
-# dfall = pd.read_csv('./grabfoodcv/demand_jakarta.csv',dtype={"fips": str},sep=",")
-df = dfall[dfall['GID_2']!='IDN.7.6_1']
+ 
+menu = st.sidebar.selectbox(
+    "Menu",
+    ('Demand_map','Chain_route')
+)
 
-st.subheader('Regional Demand per Month')
-option = st.selectbox('Select Month', df['bulan'].unique())
+if menu=='Demand_map':
+     dfall = fetch_data('./grabfoodcv/demand_jakarta.csv')
+     # dfall = pd.read_csv('./grabfoodcv/demand_jakarta.csv',dtype={"fips": str},sep=",")
+     df = dfall[dfall['GID_2']!='IDN.7.6_1']
 
-df_sel = df[df['bulan']==option]
-fig = px.choropleth(df_sel, geojson=map, locations='GID_4', color='Demand',
-                      featureidkey="properties.GID_4",
-                      color_discrete_sequence=None, 
-                      color_discrete_map={},
-                      color_continuous_scale='amp')
-fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-fig.update_geos(fitbounds="locations", visible=False)
-fig.update(layout_coloraxis_showscale=False)
-st.plotly_chart(fig)
-# c1,c2 = st.columns((1,1))
-# with c1:
-#      fig1 = px.bar(df,x= 'nama_kecamatan', y='Demand')
-#      st.plotly_chart(fig1)
-# with c2:
-#      st.plotly_chart(fig)
+     st.subheader('Regional Demand per Month')
+     option = st.selectbox('Select Month', df['bulan'].unique())
 
-  
-  # with c2:
-  # import plotly.graph_objects as go
-  # line=df['tanggal'].tolist()
+     df_sel = df[df['bulan']==option]
+     fig = px.choropleth(df_sel, geojson=map, locations='GID_4', color='Demand',
+                           featureidkey="properties.GID_4",
+                           color_discrete_sequence=None, 
+                           color_discrete_map={},
+                           color_continuous_scale='amp')
+     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+     fig.update_geos(fitbounds="locations", visible=False)
+     fig.update(layout_coloraxis_showscale=False)
+     st.plotly_chart(fig)
+     # c1,c2 = st.columns((1,1))
+     # with c1:
+     #      fig1 = px.bar(df,x= 'nama_kecamatan', y='Demand')
+     #      st.plotly_chart(fig1)
+     # with c2:
+     #      st.plotly_chart(fig)
+else:
+     st.write('hello')
 
-  # fig = go.Figure(data=[
-  #     go.Bar(name=line, x=line, y=df['Demand']),
-  #     go.Bar(name=line, x=line, y=df['Local_stock'])
-  # ])
-  # # Change the bar mode
-  # fig.update_layout(barmode='group')
-# with c2:
-  # df['tanggal'] = df['tanggal'].astype('date'))
