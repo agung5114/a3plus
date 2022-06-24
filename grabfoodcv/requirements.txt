@@ -1,6 +1,6 @@
 fiona
 geopandas>=0.9.0
-geoplot>=0.4.4
+#geoplot>=0.4.4
 pint>=0.11
 shapely>=1.8.0
 networkx==2.6.3
@@ -15,7 +15,7 @@ dask
 netCDF4
 bottleneck
 rioxarray
-Cartopy==0.18.0
+#Cartopy==0.18.0
 #geopandas 
 geojson-rewind
 plotly==4.5.1
