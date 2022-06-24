@@ -15,7 +15,7 @@ dask
 netCDF4
 bottleneck
 rioxarray
-cartopy
+Cartopy==0.18.0
 #geopandas 
 geojson-rewind
 plotly==4.5.1
