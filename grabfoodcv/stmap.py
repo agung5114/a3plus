@@ -60,10 +60,14 @@ else:
      cities = ["Jakarta","Bekasi","Bogor","Tangerang","Depok"]
      d = get_coordinates([cities[0]])
      center = [d[0][1],d[0][0]]
-     st.write(cities)
+#      st.write(cities)
      coordinates = get_coordinates(cities)
-     st.write(coordinates)
+#      st.write(coordinates)
      G = createGraph(cities,coordinates)
      cycle = routeCycle(G,coordinates)
      m = drawMap(cities,coordinates,cycle,center)
+     city = []
+     for i in cycle:
+       city.append(cities[i])
+     st.subheader("The route of the pickups is:", city)
      st.data=st_folium(m, width=725)
