@@ -66,7 +66,7 @@ else:
      #      st.write(coordinates)
           G = createGraph(cities,coordinates)
           cycle = routeCycle(G,coordinates)
-          st.write(cycle[3])
+#           st.write(cycle[3])
           m = drawMap(cities,coordinates,cycle,center)
           city = []
           for i in cycle:
