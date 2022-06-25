@@ -133,5 +133,5 @@ def drawMap(capitals,coordinates,cycle,start):
       folium.Marker(location = coordinate,icon=folium.Icon(icon_color='green'),
                   popup = capital).add_to(m1)
       
-  folium.PolyLine(route).add_to(m1,width=900)
+  folium.PolyLine(route).add_to(m1)
   return m1
