@@ -52,7 +52,7 @@ else:
      point2 = st.text_input('Input Stop Point ')
      point3 = st.text_input('Input Stop Point  ')
      point4 = st.text_input('Input Stop Point   ')
-     d = get_coordinates(start)
+     d = get_coordinates([start])
      center = [d[0][1],d[0][0]]
      if point1 and point2 and point3 and point4 ==None:
           st.write('Please input start and all stop points')
