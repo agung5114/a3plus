@@ -57,7 +57,7 @@ else:
 #           st.write('Please input start and all stop points')
 #      else:
      cities = ["Jakarta","Bekasi","Bogor","Tangerang","Depok"]
-     d = get_coordinates([cities[0])
+     d = get_coordinates([cities[0]])
      center = [d[0][1],d[0][0]]
      st.write(cities)
      coordinates = get_coordinates(cities)
