@@ -66,10 +66,10 @@ else:
      #      st.write(coordinates)
           G = createGraph(cities,coordinates)
           cycle = routeCycle(G,coordinates)
-          st.write(cycle)
+#           st.write(cycle)
           m = drawMap(cities,coordinates,cycle,center)
           city = []
           for i in cycle:
             city.append(cities[i])
-          st.subheader("The route of the pickups is:", city)
+          st.subheader("The route of the pickups is:", "--".join(city))
           st.data=st_folium(m)
