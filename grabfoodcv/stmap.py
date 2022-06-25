@@ -52,16 +52,16 @@ else:
      point2 = st.text_input('Input Stop Point ')
      point3 = st.text_input('Input Stop Point  ')
      point4 = st.text_input('Input Stop Point   ')
-#      d = get_coordinates([start])
-#      center = [d[0][1],d[0][0]]
 #      st.write(d)
 #      if point1 and point2 and point3 and point4 ==None:
 #           st.write('Please input start and all stop points')
 #      else:
      cities = ["Jakarta","Bekasi","Bogor","Tangerang","Depok"]
+     d = get_coordinates([cities[0])
+     center = [d[0][1],d[0][0]]
      st.write(cities)
      coordinates = get_coordinates(cities)
      st.write(coordinates)
      G = createGraph(cities,coordinates)
      cycle = routeCycle(G,coordinates)
-     st.write(drawMap(cities,coordinates,cycle,start))
+     st.write(drawMap(cities,coordinates,cycle,center))
