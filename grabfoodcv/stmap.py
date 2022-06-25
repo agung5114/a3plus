@@ -72,5 +72,5 @@ else:
           for i in cycle:
             city.append(cities[i])
           st.subheader("The route of the pickups is:", "--".join(city))
-          st.data=st_folium(m,width=1100)
-          folium_static(m)
+#           st.data=st_folium(m,width=1100)
+          folium_static(m,width=1200)
