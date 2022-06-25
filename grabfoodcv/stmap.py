@@ -55,7 +55,7 @@ else:
      d = get_coordinates(start)
      center = [d[0][1],d[0][0]]
      if point1 and point2 and point3 and point4 ==None:
-          st.write('Please input start and all stop points']
+          st.write('Please input start and all stop points')
      else:
           cities = [start,point1,point2,point3,point4]
           st.write(cities)
