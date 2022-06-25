@@ -54,8 +54,8 @@ else:
      point3 = st.text_input('Input Stop Point  ',value="Bogor")
      point4 = st.text_input('Input Stop Point   ',value="Tangerang")
 #     cities = ["Jakarta","Bekasi","Bogor","Tangerang","Depok"]
-     cities = []
-     cities.append(start,point1,point2,point3,point4)
+#      cities = []
+     cities = [start,point1,point2,point3,point4]
      if len(cities)<5:
           st.write('Please complete the stop points')
      else:
