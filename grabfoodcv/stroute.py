@@ -28,9 +28,9 @@ def get_coordinates(cities):
     conn.request('GET', '/v1/forward?{}'.format(params))
 
     res = conn.getresponse()
-    data = res.read()
-    data = data.decode('utf-8')
-    coordinate = (json.loads(data)['data'][0]['longitude'],json.loads(data)['data'][0]['latitude'])
+    resp = res.read()
+    coo = resp.decode('utf-8')
+    coordinate = (json.loads(coo)['data'][0]['longitude'],json.loads(coo)['data'][0]['latitude'])
     coordinates.append(coordinate)
   return coordinates
 
