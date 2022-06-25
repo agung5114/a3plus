@@ -48,22 +48,11 @@ def createGraph(capitals,coordinates):
   labels = {node:capital for node, capital in zip(nodes, capitals)}
 
   fig, ax = plt.subplots(figsize = (10, 7))
-  country.plot(color = "whitesmoke", edgecolor = "black", ax = ax)
+#   country.plot(color = "whitesmoke", edgecolor = "black", ax = ax)
   for i in nodes:
       for j in nodes:
           if i!=j:
               G.add_edge(i, j)
-  # return [G,positions,labels]
-
-# # def drawGraph(G,positions,labels):
-#   nx.draw_networkx(G, pos = positions,
-#                   labels = labels, ax = ax,
-#                   bbox = dict(facecolor = "skyblue", boxstyle = "round",
-#                               ec = "black", pad = 0.3),)
-
-#   plt.title(f"Map of {country_name} with capital cities of {len(capitals)} federal states")
-#   plt.axis("off")
-#   # plt.show()
   return G
 
 def christofides(G, weight="weight", tree=None):
