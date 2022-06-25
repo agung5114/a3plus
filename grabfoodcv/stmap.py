@@ -64,4 +64,5 @@ else:
      st.write(coordinates)
      G = createGraph(cities,coordinates)
      cycle = routeCycle(G,coordinates)
-     st.write(drawMap(cities,coordinates,cycle,center))
+     m = drawMap(cities,coordinates,cycle,center)
+     st.components.v1.html(m, width=None, height=None, scrolling=False)
