@@ -66,4 +66,4 @@ else:
      G = createGraph(cities,coordinates)
      cycle = routeCycle(G,coordinates)
      m = drawMap(cities,coordinates,cycle,center)
-     st.components.v1.html(str(m), width=725, height=None, scrolling=False)
+     st.components.v1.html(str(m), width=725, scrolling=False)
