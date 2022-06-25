@@ -5,7 +5,7 @@ import json
 import geopandas as gpd
 from geojson_rewind import rewind
 import streamlit as st
-from stroute import *
+from stroute import get_coordinates,createGraph,routeCycle,drawMap
 st.set_page_config(
      page_title="Demand Mapping",
      page_icon="🧊",
@@ -47,6 +47,19 @@ if menu=='Demand_map':
      fig.update(layout_coloraxis_showscale=False)
      st.plotly_chart(fig)
 else:
-     st.write('Hello')
-     st.write(get_coordinates(['Bogor']))
-
+     start = st.text_input('Input Start Point')
+     point1 = st.text_input('Input Stop Point')
+     point2 = st.text_input('Input Stop Point')
+     point3 = st.text_input('Input Stop Point')
+     point4 = st.text_input('Input Stop Point')
+     d = get_coordinates(start)
+     center = [d[0][1],d[0][0]]
+     if point1 and point2 and point3 and point4 ==None:
+          st.write('Please input start and all stop points']
+     else:
+          cities = [start,point1,point2,point3,point4]
+          st.write(cities)
+          coordinates = get_coordinates(cities)
+          G = createGraph(cities,coordinates)
+          cycle = routeCycle(G,coordinates)
+          st.write(drawMap(cities,coordinates,cycle,start))
