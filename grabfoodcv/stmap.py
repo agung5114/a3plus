@@ -66,4 +66,4 @@ else:
      G = createGraph(cities,coordinates)
      cycle = routeCycle(G,coordinates)
      m = drawMap(cities,coordinates,cycle,center)
-     st.data=st_folium(m, width=725, scrolling=False)
+     st.data=st_folium(m, width=725)
