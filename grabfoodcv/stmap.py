@@ -48,26 +48,28 @@ if menu=='Demand_map':
      fig.update(layout_coloraxis_showscale=False)
      st.plotly_chart(fig)
 else:
-     start = st.text_input('Input Start Point')
-     point1 = st.text_input('Input Stop Point')
-     point2 = st.text_input('Input Stop Point ')
-     point3 = st.text_input('Input Stop Point  ')
-     point4 = st.text_input('Input Stop Point   ')
-#      st.write(d)
-#      if point1 and point2 and point3 and point4 ==None:
-#           st.write('Please input start and all stop points')
-#      else:
-     cities = ["Jakarta","Bekasi","Bogor","Tangerang","Depok"]
-     d = get_coordinates([cities[0]])
-     center = [d[0][1],d[0][0]]
-#      st.write(cities)
-     coordinates = get_coordinates(cities)
-#      st.write(coordinates)
-     G = createGraph(cities,coordinates)
-     cycle = routeCycle(G,coordinates)
-     m = drawMap(cities,coordinates,cycle,center)
-     city = []
-     for i in cycle:
-       city.append(cities[i])
-     st.subheader("The route of the pickups is:", city)
-     st.data=st_folium(m, width=725)
+     start = st.text_input('Input Start Point',value='Jakarta')
+     point1 = st.text_input('Input Stop Point',value='Bekasi')
+     point2 = st.text_input('Input Stop Point ',value="Depok")
+     point3 = st.text_input('Input Stop Point  ',value="Bogor")
+     point4 = st.text_input('Input Stop Point   ',value="Tangerang")
+#     cities = ["Jakarta","Bekasi","Bogor","Tangerang","Depok"]
+     cities = []
+     cities.append(start,point1,point2,point3,point4)
+     if len(cities)<5:
+          st.write('Please complete the stop points')
+     else:
+          d = get_coordinates([cities[0]])
+          center = [d[0][1],d[0][0]]
+     #      st.write(cities)
+          coordinates = get_coordinates(cities)
+     #      st.write(coordinates)
+          G = createGraph(cities,coordinates)
+          cycle = routeCycle(G,coordinates)
+          st.write(cycle)
+          m = drawMap(cities,coordinates,cycle,center)
+          city = []
+          for i in cycle:
+            city.append(cities[i])
+          st.subheader("The route of the pickups is:", city)
+          st.data=st_folium(m)
