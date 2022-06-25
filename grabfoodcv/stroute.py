@@ -123,7 +123,7 @@ def routeCycle(G, coordinates):
   cycle = nx_app.christofides(G, weight="weight")
   return cycle
 
-def drawMap(capitals,coordinates,cycle):
+def drawMap(capitals,coordinates,cycle,start):
   # coordinates=[]
   folium_coordinates = []
   for x,y in coordinates:
@@ -133,7 +133,7 @@ def drawMap(capitals,coordinates,cycle):
   for stop in cycle:
       route.append(folium_coordinates[stop])
       
-  m1 = folium.Map(location = [-6.187, 106.8297], #[51, 10],   #latitude (N), longitude (E)
+  m1 = folium.Map(location = start, #[51, 10],   #latitude (N), longitude (E)
                   tiles = "OpenStreetMap", 
                   zoom_start= 10
                   )
