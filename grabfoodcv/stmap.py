@@ -6,6 +6,7 @@ import geopandas as gpd
 from geojson_rewind import rewind
 import streamlit as st
 from stroute import get_coordinates,createGraph,routeCycle,drawMap
+from streamlit_folium import st_folium
 st.set_page_config(
      page_title="Demand Mapping",
      page_icon="🧊",
@@ -65,4 +66,4 @@ else:
      G = createGraph(cities,coordinates)
      cycle = routeCycle(G,coordinates)
      m = drawMap(cities,coordinates,cycle,center)
-     st.components.v1.html(str(m), width=None, height=None, scrolling=False)
+     st.components.v1.html(str(m), width=725, height=None, scrolling=False)
