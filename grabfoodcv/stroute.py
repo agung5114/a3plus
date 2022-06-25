@@ -8,7 +8,7 @@ import networkx.algorithms.approximation as nx_app
 from itertools import permutations
 import folium
 
-%matplotlib inline
+# %matplotlib inline
 from shapely.geometry import Polygon
 import warnings
 warnings.filterwarnings(action = "ignore")
