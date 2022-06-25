@@ -6,7 +6,7 @@ import geopandas as gpd
 from geojson_rewind import rewind
 import streamlit as st
 from stroute import get_coordinates,createGraph,routeCycle,drawMap
-from streamlit_folium import st_folium
+from streamlit_folium import st_folium, folium_static
 st.set_page_config(
      page_title="Demand Mapping",
      page_icon="🧊",
