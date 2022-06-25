@@ -126,7 +126,7 @@ def drawMap(capitals,coordinates,cycle,start):
       
   m1 = folium.Map(location = start, #[51, 10],   #latitude (N), longitude (E)
                   tiles = "OpenStreetMap", 
-                  zoom_start= 12
+                  zoom_start= 11
                   )
 
   for coordinate, capital in zip(folium_coordinates, capitals):
