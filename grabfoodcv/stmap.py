@@ -48,5 +48,5 @@ if menu=='Demand_map':
      st.plotly_chart(fig)
 else:
      st.write('Hello')
-     st.write(get_coordinates(['Bogor'])
+     st.write(get_coordinates(['Bogor']))
 
