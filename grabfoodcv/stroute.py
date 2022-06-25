@@ -30,8 +30,8 @@ def get_coordinates(cities):
 
     res = conn.getresponse()
     resp = res.read()
-    coo = resp.decode('utf-8')
-    coordinate = (json.loads(coo)['data'][0]['longitude'],json.loads(coo)['data'][0]['latitude'])
+    coo = json.loads(resp.decode('utf-8'))
+    coordinate = coo['data'][0]['longitude'],coo['data'][0]['latitude'])
     coordinates.append(coordinate)
   return coordinates
 
