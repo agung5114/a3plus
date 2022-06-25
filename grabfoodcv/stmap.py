@@ -73,3 +73,4 @@ else:
             city.append(cities[i])
           st.subheader("The route of the pickups is:", "--".join(city))
           st.data=st_folium(m,width=1100)
+          folium_static(m)
