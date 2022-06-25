@@ -47,5 +47,6 @@ if menu=='Demand_map':
      fig.update(layout_coloraxis_showscale=False)
      st.plotly_chart(fig)
 else:
-     st.write('hello')
+     st.write('Hello')
+     st.write(get_coordinates(['Bogor'])
 
