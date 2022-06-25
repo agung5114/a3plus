@@ -61,7 +61,7 @@ else:
      cities = ["Jakarta","Bekasi","Bogor","Tangerang","Depok"]
      st.write(cities)
      coordinates = get_coordinates(cities)
-     st.write(cooedinates)
+     st.write(coordinates)
 #           G = createGraph(cities,coordinates)
 #           cycle = routeCycle(G,coordinates)
 #           st.write(drawMap(cities,coordinates,cycle,start))
