@@ -31,7 +31,7 @@ def get_coordinates(cities):
     res = conn.getresponse()
     resp = res.read()
     coo = json.loads(resp.decode('utf-8'))
-    coordinate = coo['data'][0]['longitude'],coo['data'][0]['latitude'])
+    coordinate = (coo['data'][0]['longitude'],coo['data'][0]['latitude'])
     coordinates.append(coordinate)
   return coordinates
 
