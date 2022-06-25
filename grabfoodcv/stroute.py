@@ -1,7 +1,7 @@
 import geopandas as gpd
 import networkx as nx
 # import geopy
-import matplotlib-inline.pyplot as plt
+import matplotlib.pyplot as plt
 import numpy as np
 import networkx.algorithms.approximation as nx_app
 # import math
