@@ -48,7 +48,7 @@ st.set_page_config(
 #      fig.update(layout_coloraxis_showscale=False)
 #      st.plotly_chart(fig)
 # else:
-c1,c2 = st.columns((1,1))
+c1,c2 = st.columns((1,3))
 with c1:
      start = st.text_input('Input Start Point',value='Jakarta')
      point1 = st.text_input('Input Stop Point',value='Bekasi')
@@ -76,4 +76,4 @@ with c2:
             city.append(cities[i])
           st.subheader("The route of the pickups is:", "--".join(city))
      #           st.data=st_folium(m,width=1100)
-          folium_static(m,width=1200)
+          folium_static(m)
