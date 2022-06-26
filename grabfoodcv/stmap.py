@@ -48,11 +48,11 @@ st.set_page_config(
 #      fig.update(layout_coloraxis_showscale=False)
 #      st.plotly_chart(fig)
 # else:
-c1,c2 = st.columns((1,3))
+c1,c2 = st.columns((1,2))
 with c1:
      start = st.text_input('Input Start Point',value='Jakarta')
-     point1 = st.text_input('Input Stop Point',value='Bekasi')
-     point2 = st.text_input('Input Stop Point ',value="Depok")
+     point1 = st.text_input('Input Stop Point',value='Depok')
+     point2 = st.text_input('Input Stop Point ',value="Bekasi")
      point3 = st.text_input('Input Stop Point  ',value="Bogor")
 #      point4 = st.text_input('Input Stop Point   ',value="Tangerang")
      #     cities = ["Jakarta","Bekasi","Bogor","Tangerang","Depok"]
