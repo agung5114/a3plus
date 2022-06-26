@@ -53,11 +53,12 @@ with c1:
      start = st.text_input('Input Start Point',value='Jakarta')
      point1 = st.text_input('Input Stop Point',value='Bekasi')
      point2 = st.text_input('Input Stop Point ',value="Depok")
-     point3 = st.text_input('Input Stop Point  ',value="Bogor")
-     point4 = st.text_input('Input Stop Point   ',value="Tangerang")
+#      point3 = st.text_input('Input Stop Point  ',value="Bogor")
+#      point4 = st.text_input('Input Stop Point   ',value="Tangerang")
      #     cities = ["Jakarta","Bekasi","Bogor","Tangerang","Depok"]
      #      cities = []
-     cities = [start,point1,point2,point3,point4]
+#      cities = [start,point1,point2,point3,point4]
+     cities = [start,point1,point2]
 with c2:
      if len(cities)<5:
           st.write('Please complete the stop points')
