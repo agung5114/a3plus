@@ -60,7 +60,7 @@ with c1:
 #      cities = [start,point1,point2,point3,point4]
      cities = [start,point1,point2,point3]
 with c2:
-     if len(cities)<3:
+     if len(cities)<4:
           st.write('Please complete the stop points')
      else:
           d = get_coordinates([cities[0]])
