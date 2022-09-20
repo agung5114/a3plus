@@ -36,16 +36,16 @@ def fetch_data(url):
 #     "Menu",
 #     ('Demand_map','Chain_route')
 # )
-
+st.subheader('AQI per State')
 # if menu=='Demand_map':
 c1,c2,c3 = st.columns((3,1,3))
 with c1:
      df = fetch_data('./grabfoodcv/jakarta_aqi.csv')
+     st.dataframe(df)
 #      dfall = fetch_data('./grabfoodcv/demand_jakarta.csv')
      # dfall = pd.read_csv('./grabfoodcv/demand_jakarta.csv',dtype={"fips": str},sep=",")
 #      df = dfall[dfall['GID_2']!='IDN.7.6_1']
 #      df = dfall[dfall['Province].isin(['DKI JAKARTA'])]
-     st.subheader('AQI per State')
 #      option = st.selectbox('Select Month', df['bulan'].unique())
      option = st.selectbox('Select State', df['State'].unique())
 
