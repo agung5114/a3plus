@@ -57,7 +57,7 @@ with c1:
         df = df
      else:
         df = df[df['State']==option]
-     fig = px.choropleth(df, geojson=map, locations='GID_4', 
+     fig = px.choropleth(geojson=map, locations=df['GID_4'], 
                            color='Level',
                            featureidkey="properties.GID_4",
 #                            color_discrete_sequence=None, 
