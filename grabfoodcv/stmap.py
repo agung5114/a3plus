@@ -33,14 +33,15 @@ def fetch_map(url):
 st.subheader('Air Quality Index (AQI)')
 df = pd.read_csv('./grabfoodcv/aqi_jakarta.csv',sep=",")
 df = df[df['State']!='KAB.ADM.KEP.SERIBU']
-option = st.selectbox('Select State', ['All']+df['State'].unique().tolist())
-if option=='All':
-    df = df
-else:
-    df = df[df['State']==option]
+
 # if menu=='Demand_map':
 c1,c2 = st.columns((3,2))
 with c1:
+    option = st.selectbox('Select State', ['All']+df['State'].unique().tolist())
+    if option=='All':
+        df = df
+    else:
+        df = df[df['State']==option]
 #     df = fetch_data('./grabfoodcv/aqi_jakarta.csv')
     st.dataframe(df[['State','Municipality','District','AQI','Level','GID_4']])
 # with c2:
