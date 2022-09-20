@@ -32,25 +32,26 @@ map = rewind(geo_ur,rfc7946=False)
 def fetch_data(url):
      data = pd.read_csv(url,dtype={"fips": str},sep=",")
      return data
-
- 
 # menu = st.sidebar.selectbox(
 #     "Menu",
 #     ('Demand_map','Chain_route')
 # )
 
 # if menu=='Demand_map':
-c1,c2 = st.columns((1,2))
+c1,c2 = st.columns((3,1,3))
 with c1:
-     dfall = fetch_data('./grabfoodcv/demand_jakarta.csv')
+     dfall = fetch_data('./grabfoodcv/jakarta_aqi.csv')
+#      dfall = fetch_data('./grabfoodcv/demand_jakarta.csv')
      # dfall = pd.read_csv('./grabfoodcv/demand_jakarta.csv',dtype={"fips": str},sep=",")
-     df = dfall[dfall['GID_2']!='IDN.7.6_1']
-
-     st.subheader('Regional Demand per Month')
-     option = st.selectbox('Select Month', df['bulan'].unique())
+#      df = dfall[dfall['GID_2']!='IDN.7.6_1']
+     df = dfall[dfall['Province]!='DKI JAKARTA']
+     
+     st.subheader('AQI per State')
+#      option = st.selectbox('Select Month', df['bulan'].unique())
+     option = st.selectbox('Select State', df['State'].unique())
 
      df_sel = df[df['bulan']==option]
-     fig = px.choropleth(df_sel, geojson=map, locations='GID_4', color='Demand',
+     fig = px.choropleth(df_sel, geojson=map, locations='id', color='Level',
                            featureidkey="properties.GID_4",
                            color_discrete_sequence=None, 
                            color_discrete_map={},
@@ -60,6 +61,8 @@ with c1:
      fig.update(layout_coloraxis_showscale=False)
      st.plotly_chart(fig)
 with c2:
+    st.empty()
+with c3:
      loc_button = Button(label="Get Location")
      loc_button.js_on_event("button_click", CustomJS(code="""
          navigator.geolocation.getCurrentPosition(
