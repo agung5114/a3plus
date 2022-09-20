@@ -47,14 +47,14 @@ with c1:
 #      df = dfall[dfall['GID_2']!='IDN.7.6_1']
      df = df[df['State']!='KAB.ADM.KEP.SERIBU']
 #      option = st.selectbox('Select Month', df['bulan'].unique())
-     option = st.selectbox('Select State', df['State'].unique())
+     option = st.selectbox('Select State', ['All']+df['State'].unique())
 
 #      df_sel = df[df['State']==option]
      fig = px.choropleth(df, geojson=map, locations='GID_4', 
                            color='Level',
                            featureidkey="properties.GID_4",
 #                            color_discrete_sequence=None, 
-#                            color_discrete_map={},
+                           color_discrete_map={'Good':'green','Fair':'yellow','Poor':'orange','Very Poor':'red','Hazardous':'darkred'},
 #                            color_continuous_scale='Portland'
                         )
      fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
