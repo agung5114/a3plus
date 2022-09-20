@@ -30,12 +30,12 @@ def fetch_map(url):
     map = rewind(geo_ur,rfc7946=False)
     return map
 
-map = fetch_map('./grabfoodcv/jakarta.geojson')
 
-@st.cache
-def fetch_data(url):
-     data = pd.read_csv(url,dtype={"fips": str},sep=",")
-     return data
+
+# @st.cache
+# def fetch_data(url):
+#      data = pd.read_csv(url,dtype={"fips": str},sep=",")
+#      return data
 # menu = st.sidebar.selectbox(
 #     "Menu",
 #     ('Demand_map','Chain_route')
@@ -44,11 +44,12 @@ st.subheader('Air Quality Index (AQI)')
 # if menu=='Demand_map':
 c1,c2,c3 = st.columns((5,1,5))
 with c1:
-     df = fetch_data('./grabfoodcv/aqi_jakarta.csv')
+    df = pd.read_csv('./grabfoodcv/aqi_jakarta.csv',sep=",")
+#     df = fetch_data('./grabfoodcv/aqi_jakarta.csv')
      st.dataframe(df[['State','Municipality','District','AQI','Level','GID_4']])
      df = df[df['State']!='KAB.ADM.KEP.SERIBU']
      option = st.selectbox('Select State', ['All']+df['State'].unique().tolist())
-    
+    map = fetch_map('./grabfoodcv/jakarta.geojson')
      if option=='All':
         df = df
      else:
