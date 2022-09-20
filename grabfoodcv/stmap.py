@@ -56,7 +56,7 @@ with c1:
      fig = px.choropleth(df,geojson=map, locations='GID_4', 
                          color='Level',
                          featureidkey="properties.GID_4",
-                         hover_data='District',  
+                         hover_data=df['District'],  
                          color_discrete_map={'Good':'green','Fair':'yellow','Poor':'orange','Very Poor':'red','Hazardous':'darkred'},
 #                            color_continuous_scale='Portland'
                         )
