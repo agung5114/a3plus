@@ -38,7 +38,7 @@ def fetch_data(url):
 # )
 
 # if menu=='Demand_map':
-c1,c2 = st.columns((3,1,3))
+c1,c2,c3 = st.columns((3,1,3))
 with c1:
      df = fetch_data('./grabfoodcv/jakarta_aqi.csv')
 #      dfall = fetch_data('./grabfoodcv/demand_jakarta.csv')
