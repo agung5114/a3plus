@@ -39,13 +39,13 @@ if option=='All':
 else:
     df = df[df['State']==option]
 # if menu=='Demand_map':
-c1,c2,c3 = st.columns((5,1,5))
+c1,c2 = st.columns((3,2))
 with c1:
 #     df = fetch_data('./grabfoodcv/aqi_jakarta.csv')
     st.dataframe(df[['State','Municipality','District','AQI','Level','GID_4']])
+# with c2:
+#     st.empty()
 with c2:
-    st.empty()
-with c3:
     map = fetch_map('./grabfoodcv/jakarta.geojson')
     
     fig = px.choropleth(df,geojson=map, locations='GID_4', 
