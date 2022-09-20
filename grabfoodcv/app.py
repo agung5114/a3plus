@@ -35,11 +35,11 @@ def get_loc(lat,lon):
     data = json.loads(response.content)
     return data['address']
 
-# if result:
-#     if "GET_LOCATION" in result:
-#         location = result.get("GET_LOCATION")
+if result:
+    if "GET_LOCATION" in result:
+        location = result.get("GET_LOCATION")
         # st.write(location)
-location = result.get("GET_LOCATION")
+# location = result.get("GET_LOCATION")
 c1,c2 = st.columns((3,2))
 df = pd.DataFrame(
         list(zip([location['lat']],[location['lon']])),
