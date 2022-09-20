@@ -54,7 +54,8 @@ with c1:
                            featureidkey="properties.GID_4",
                            color_discrete_sequence=None, 
                            color_discrete_map={},
-                           color_continuous_scale='amp')
+#                            color_continuous_scale='amp'
+                        )
      fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
      fig.update_geos(fitbounds="locations", visible=False)
      fig.update(layout_coloraxis_showscale=False)
