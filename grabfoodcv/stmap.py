@@ -18,7 +18,7 @@ def get_loc(lat,lon):
     data = json.loads(response.content)
     return data['address']
 st.set_page_config(
-     page_title="Demand Mapping",
+     page_title="AQI",
      page_icon="🧊",
      layout="wide",
      initial_sidebar_state="expanded"
@@ -40,7 +40,7 @@ st.subheader('AQI per State')
 # if menu=='Demand_map':
 c1,c2,c3 = st.columns((3,1,3))
 with c1:
-     df = fetch_data('./grabfoodcv/jakarta_aqi.csv')
+     df = fetch_data('./grabfoodcv/aqi_jakarta.csv')
      st.dataframe(df)
 #      dfall = fetch_data('./grabfoodcv/demand_jakarta.csv')
      # dfall = pd.read_csv('./grabfoodcv/demand_jakarta.csv',dtype={"fips": str},sep=",")
@@ -50,9 +50,9 @@ with c1:
      option = st.selectbox('Select State', df['State'].unique())
 
 #      df_sel = df[df['State']==option]
-     fig = px.choropleth(df, geojson=map, locations='CC_4', 
+     fig = px.choropleth(df, geojson=map, locations='GID_4', 
                            color='Level',
-                           featureidkey="properties.CC_4",
+                           featureidkey="properties.GID_4",
 #                            color_discrete_sequence=None, 
 #                            color_discrete_map={},
 #                            color_continuous_scale='Portland'
