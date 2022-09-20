@@ -44,7 +44,7 @@ with c1:
 #      dfall = fetch_data('./grabfoodcv/demand_jakarta.csv')
      # dfall = pd.read_csv('./grabfoodcv/demand_jakarta.csv',dtype={"fips": str},sep=",")
 #      df = dfall[dfall['GID_2']!='IDN.7.6_1']
-     df = dfall[dfall['Province]!='DKI JAKARTA']
+     df = dfall[dfall['Province].isin(['DKI JAKARTA'])]
      
      st.subheader('AQI per State')
 #      option = st.selectbox('Select Month', df['bulan'].unique())
