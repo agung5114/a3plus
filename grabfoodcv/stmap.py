@@ -45,7 +45,7 @@ with c1:
 #      dfall = fetch_data('./grabfoodcv/demand_jakarta.csv')
      # dfall = pd.read_csv('./grabfoodcv/demand_jakarta.csv',dtype={"fips": str},sep=",")
 #      df = dfall[dfall['GID_2']!='IDN.7.6_1']
-#      df = dfall[dfall['Province].isin(['DKI JAKARTA'])]
+     df = df[df['State']!='KAB.ADM.KEP.SERIBU']
 #      option = st.selectbox('Select Month', df['bulan'].unique())
      option = st.selectbox('Select State', df['State'].unique())
 
