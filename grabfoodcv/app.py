@@ -37,21 +37,20 @@ def get_loc(lat,lon):
 
 if result:
     if "GET_LOCATION" in result:
-        location = result.get("GET_LOCATION")
-
-df = pd.DataFrame(list(zip([location['lat']],[location['lon']])),columns=['lat', 'lon'])
+          location = result.get("GET_LOCATION")
+          df = pd.DataFrame(list(zip([location['lat']],[location['lon']])),columns=['lat', 'lon'])
         # st.write(location)
 # location = result.get("GET_LOCATION")
-c1,c2 = st.columns((3,2))
-with c1:
-    st.map(df)
-with c2:
-    df = pd.read_csv('./grabfoodcv/aqi_jakarta.csv',sep=",")
-    loc = get_loc(location['lat'],location['lon'])
-    st.table(pd.DataFrame(loc.items(), columns=['Attribute', 'Value']))
-    dfsample = df.sample(1)
-    st.subheader('AQI value: '+str(dfsample['AQI'].tolist()[0])+'  |  '\
-                +'Quality Level: '+dfsample['Level'].tolist()[0])
-    sb = st.button('Submit Air Quality Report')
-    if sb:
-        st.write("Submission Successful, coin achieved: 0.002DOT")
+          c1,c2 = st.columns((3,2))
+          with c1:
+              st.map(df)
+          with c2:
+              df = pd.read_csv('./grabfoodcv/aqi_jakarta.csv',sep=",")
+              loc = get_loc(location['lat'],location['lon'])
+              st.table(pd.DataFrame(loc.items(), columns=['Attribute', 'Value']))
+              dfsample = df.sample(1)
+              st.subheader('AQI value: '+str(dfsample['AQI'].tolist()[0])+'  |  '\
+                          +'Quality Level: '+dfsample['Level'].tolist()[0])
+              sb = st.button('Submit Air Quality Report')
+              if sb:
+                  st.write("Submission Successful, coin achieved: 0.002DOT")
