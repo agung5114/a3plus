@@ -46,36 +46,36 @@ c1,c2,c3 = st.columns((5,1,5))
 with c1:
     df = pd.read_csv('./grabfoodcv/aqi_jakarta.csv',sep=",")
 #     df = fetch_data('./grabfoodcv/aqi_jakarta.csv')
-     st.dataframe(df[['State','Municipality','District','AQI','Level','GID_4']])
-     df = df[df['State']!='KAB.ADM.KEP.SERIBU']
-     option = st.selectbox('Select State', ['All']+df['State'].unique().tolist())
+    st.dataframe(df[['State','Municipality','District','AQI','Level','GID_4']])
+    df = df[df['State']!='KAB.ADM.KEP.SERIBU']
+    option = st.selectbox('Select State', ['All']+df['State'].unique().tolist())
     map = fetch_map('./grabfoodcv/jakarta.geojson')
-     if option=='All':
+    if option=='All':
         df = df
-     else:
+    else:
         df = df[df['State']==option]
-     fig = px.choropleth(df,geojson=map, locations='GID_4', 
+    fig = px.choropleth(df,geojson=map, locations='GID_4', 
                          color='Level',
                          featureidkey="properties.GID_4",
                          color_discrete_map={'Good':'green','Fair':'yellow','Poor':'orange','Very Poor':'red','Hazardous':'darkred'},
 #                            color_continuous_scale='Portland'
                         )
-     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-     fig.update_geos(fitbounds="locations", visible=False)
-     fig.update(layout_coloraxis_showscale=False)
-     st.plotly_chart(fig)
+    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+    fig.update_geos(fitbounds="locations", visible=False)
+    fig.update(layout_coloraxis_showscale=False)
+    st.plotly_chart(fig)
 with c2:
     st.empty()
 with c3:
-     loc_button = Button(label="Get Location")
-     loc_button.js_on_event("button_click", CustomJS(code="""
+    loc_button = Button(label="Get Location")
+    loc_button.js_on_event("button_click", CustomJS(code="""
          navigator.geolocation.getCurrentPosition(
              (loc) => {
                  document.dispatchEvent(new CustomEvent("GET_LOCATION", {detail: {lat: loc.coords.latitude, lon: loc.coords.longitude}}))
              }
          )
          """))
-     result = streamlit_bokeh_events(
+    result = streamlit_bokeh_events(
          loc_button,
          events="GET_LOCATION",
          key="get_location",
@@ -83,17 +83,17 @@ with c3:
          override_height=75,
          debounce_time=0)
 
-     if result:
-         if "GET_LOCATION" in result:
-             location = result.get("GET_LOCATION")
+    if result:
+        if "GET_LOCATION" in result:
+            location = result.get("GET_LOCATION")
              # st.write(location)
-             df = pd.DataFrame(
+            df = pd.DataFrame(
                      list(zip([location['lat']],[location['lon']])),
                      columns=['lat', 'lon'])
 
-             st.map(df)
-             loc = get_loc(location['lat'],location['lon'])
-             st.table(pd.DataFrame(loc.items(), columns=['Attribute', 'Value']))
+            st.map(df)
+            loc = get_loc(location['lat'],location['lon'])
+            st.table(pd.DataFrame(loc.items(), columns=['Attribute', 'Value']))
      
 # else:
 # c1,c2 = st.columns((1,2))
