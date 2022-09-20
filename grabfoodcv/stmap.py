@@ -41,7 +41,7 @@ st.subheader('AQI per State')
 c1,c2,c3 = st.columns((5,1,5))
 with c1:
      df = fetch_data('./grabfoodcv/aqi_jakarta.csv')
-     st.dataframe(df)
+     st.dataframe(df[['State','Municipality','District','AQI','Level','GID_4']])
 #      dfall = fetch_data('./grabfoodcv/demand_jakarta.csv')
      # dfall = pd.read_csv('./grabfoodcv/demand_jakarta.csv',dtype={"fips": str},sep=",")
 #      df = dfall[dfall['GID_2']!='IDN.7.6_1']
