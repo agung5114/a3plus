@@ -48,7 +48,7 @@ df = pd.DataFrame(
 with c1:
     st.map(df)
 with c2:
-    df = pd.read_csv('aqi_jakarta.csv',sep=",")
+    df = pd.read_csv('./grabfoodcv/aqi_jakarta.csv',sep=",")
     loc = get_loc(location['lat'],location['lon'])
     st.table(pd.DataFrame(loc.items(), columns=['Attribute', 'Value']))
     dfsample = df.sample(1)
