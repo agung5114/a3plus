@@ -29,3 +29,5 @@ recipe-scrapers==14.3.0
 requests==2.26.0
 pygsearch==0.5.1
 streamlit-folium
+bokeh
+streamlit-bokeh-events
