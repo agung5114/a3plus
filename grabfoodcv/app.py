@@ -3,7 +3,12 @@ from bokeh.models.widgets import Button
 from bokeh.models import CustomJS
 from streamlit_bokeh_events import streamlit_bokeh_events
 import pandas as pd
-import numpy as np
+st.set_page_config(
+     page_title="Loc",
+     page_icon="🧊",
+     layout="wide",
+     initial_sidebar_state="expanded"
+ )
 
 loc_button = Button(label="Get Location")
 loc_button.js_on_event("button_click", CustomJS(code="""
@@ -30,14 +35,25 @@ def get_loc(lat,lon):
     data = json.loads(response.content)
     return data['address']
 
-if result:
-    if "GET_LOCATION" in result:
-        location = result.get("GET_LOCATION")
+# if result:
+#     if "GET_LOCATION" in result:
+#         location = result.get("GET_LOCATION")
         # st.write(location)
-        df = pd.DataFrame(
-                list(zip([location['lat']],[location['lon']])),
-                columns=['lat', 'lon'])
+location = result.get("GET_LOCATION")
+c1,c2 = st.columns((3,2))
+df = pd.DataFrame(
+        list(zip([location['lat']],[location['lon']])),
+        columns=['lat', 'lon'])
 
-        st.map(df)
-        loc = get_loc(location['lat'],location['lon'])
-        st.table(pd.DataFrame(loc.items(), columns=['Attribute', 'Value']))
+with c1:
+    st.map(df)
+with c2:
+    df = pd.read_csv('aqi_jakarta.csv',sep=",")
+    loc = get_loc(location['lat'],location['lon'])
+    st.table(pd.DataFrame(loc.items(), columns=['Attribute', 'Value']))
+    dfsample = df.sample(1)
+    st.subheader('AQI value: '+str(dfsample['AQI'].tolist()[0])+'  |  '\
+                +'Quality Level: '+dfsample['Level'].tolist()[0])
+    sb = st.button('Submit Air Quality Report')
+    if sb:
+        st.write("Submission Successful, coin achieved: 0.002DOT")
