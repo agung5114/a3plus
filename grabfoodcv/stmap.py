@@ -61,7 +61,7 @@ with c1:
                            color='Level',
                            featureidkey="properties.GID_4",
 #                            color_discrete_sequence=None, 
-                         text = 'District', mode = 'text',  
+                         text = df['District'], mode = 'text',  
                          color_discrete_map={'Good':'green','Fair':'yellow','Poor':'orange','Very Poor':'red','Hazardous':'darkred'},
 #                            color_continuous_scale='Portland'
                         )
