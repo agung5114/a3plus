@@ -41,19 +41,23 @@ def fetch_map(url):
 #     ('Demand_map','Chain_route')
 # )
 st.subheader('Air Quality Index (AQI)')
-# if menu=='Demand_map':
-c1,c2,c3 = st.columns((5,1,5))
-with c1:
-    df = pd.read_csv('./grabfoodcv/aqi_jakarta.csv',sep=",")
-    df = df[df['State']!='KAB.ADM.KEP.SERIBU']
-    option = st.selectbox('Select State', ['All']+df['State'].unique().tolist())
-#     df = fetch_data('./grabfoodcv/aqi_jakarta.csv')
-    st.dataframe(df[['State','Municipality','District','AQI','Level','GID_4']])
-    map = fetch_map('./grabfoodcv/jakarta.geojson')
-    if option=='All':
+df = pd.read_csv('./grabfoodcv/aqi_jakarta.csv',sep=",")
+df = df[df['State']!='KAB.ADM.KEP.SERIBU']
+option = st.selectbox('Select State', ['All']+df['State'].unique().tolist())
+if option=='All':
         df = df
     else:
         df = df[df['State']==option]
+# if menu=='Demand_map':
+c1,c2,c3 = st.columns((5,1,5))
+with c1:
+#     df = fetch_data('./grabfoodcv/aqi_jakarta.csv')
+    st.dataframe(df[['State','Municipality','District','AQI','Level','GID_4']])
+with c2:
+    st.empty()
+with c3:
+    map = fetch_map('./grabfoodcv/jakarta.geojson')
+    
     fig = px.choropleth(df,geojson=map, locations='GID_4', 
                          color='Level',
                          featureidkey="properties.GID_4",
@@ -64,36 +68,34 @@ with c1:
     fig.update_geos(fitbounds="locations", visible=False)
     fig.update(layout_coloraxis_showscale=False)
     st.plotly_chart(fig)
-with c2:
-    st.empty()
-with c3:
-    loc_button = Button(label="Get Location")
-    loc_button.js_on_event("button_click", CustomJS(code="""
-         navigator.geolocation.getCurrentPosition(
-             (loc) => {
-                 document.dispatchEvent(new CustomEvent("GET_LOCATION", {detail: {lat: loc.coords.latitude, lon: loc.coords.longitude}}))
-             }
-         )
-         """))
-    result = streamlit_bokeh_events(
-         loc_button,
-         events="GET_LOCATION",
-         key="get_location",
-         refresh_on_update=True,
-         override_height=75,
-         debounce_time=0)
+    
+#     loc_button = Button(label="Get Location")
+#     loc_button.js_on_event("button_click", CustomJS(code="""
+#          navigator.geolocation.getCurrentPosition(
+#              (loc) => {
+#                  document.dispatchEvent(new CustomEvent("GET_LOCATION", {detail: {lat: loc.coords.latitude, lon: loc.coords.longitude}}))
+#              }
+#          )
+#          """))
+#     result = streamlit_bokeh_events(
+#          loc_button,
+#          events="GET_LOCATION",
+#          key="get_location",
+#          refresh_on_update=True,
+#          override_height=75,
+#          debounce_time=0)
 
-    if result:
-        if "GET_LOCATION" in result:
-            location = result.get("GET_LOCATION")
-             # st.write(location)
-            df = pd.DataFrame(
-                     list(zip([location['lat']],[location['lon']])),
-                     columns=['lat', 'lon'])
+#     if result:
+#         if "GET_LOCATION" in result:
+#             location = result.get("GET_LOCATION")
+#              # st.write(location)
+#             df = pd.DataFrame(
+#                      list(zip([location['lat']],[location['lon']])),
+#                      columns=['lat', 'lon'])
 
-            st.map(df)
-            loc = get_loc(location['lat'],location['lon'])
-            st.table(pd.DataFrame(loc.items(), columns=['Attribute', 'Value']))
+#             st.map(df)
+#             loc = get_loc(location['lat'],location['lon'])
+#             st.table(pd.DataFrame(loc.items(), columns=['Attribute', 'Value']))
      
 # else:
 # c1,c2 = st.columns((1,2))
