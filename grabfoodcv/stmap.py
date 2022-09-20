@@ -38,7 +38,7 @@ def fetch_data(url):
 # )
 st.subheader('AQI per State')
 # if menu=='Demand_map':
-c1,c2,c3 = st.columns((3,1,3))
+c1,c2,c3 = st.columns((5,1,5))
 with c1:
      df = fetch_data('./grabfoodcv/aqi_jakarta.csv')
      st.dataframe(df)
@@ -53,7 +53,7 @@ with c1:
         df = df
      else:
         df = df[df['State']==option]
-     fig = px.choropleth(df, geojson=map, locations='District', 
+     fig = px.choropleth(df, geojson=map, locations='GID_4', 
                            color='Level',
                            featureidkey="properties.GID_4",
 #                            color_discrete_sequence=None, 
