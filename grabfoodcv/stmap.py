@@ -52,7 +52,7 @@ with c1:
 #      df_sel = df[df['State']==option]
      fig = px.choropleth(df, geojson=map, locations='GID_4', 
                            color='Level',
-                           featureidkey="properties.GID_4",
+                           featureidkey="properties.CC_4",
                            color_discrete_sequence=None, 
                            color_discrete_map={},
                            color_continuous_scale='amp'
