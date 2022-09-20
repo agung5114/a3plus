@@ -23,10 +23,14 @@ st.set_page_config(
      layout="wide",
      initial_sidebar_state="expanded"
  )
+@st.cache
+def fetch_map(url):
+    f = gpd.read_file(url)
+    geo_ur = json.loads(f.to_json())
+    map = rewind(geo_ur,rfc7946=False)
+    return map
 
-f = gpd.read_file('./grabfoodcv/jakarta.geojson')
-geo_ur = json.loads(f.to_json())
-map = rewind(geo_ur,rfc7946=False)
+map = fetch_map('./grabfoodcv/jakarta.geojson')
 
 @st.cache
 def fetch_data(url):
@@ -36,7 +40,7 @@ def fetch_data(url):
 #     "Menu",
 #     ('Demand_map','Chain_route')
 # )
-st.subheader('AQI per State')
+st.subheader('Air Quality Index (AQI)')
 # if menu=='Demand_map':
 c1,c2,c3 = st.columns((5,1,5))
 with c1:
@@ -57,7 +61,8 @@ with c1:
                            color='Level',
                            featureidkey="properties.GID_4",
 #                            color_discrete_sequence=None, 
-                           color_discrete_map={'Good':'green','Fair':'yellow','Poor':'orange','Very Poor':'red','Hazardous':'darkred'},
+                         text = 'District', mode = 'text',  
+                         color_discrete_map={'Good':'green','Fair':'yellow','Poor':'orange','Very Poor':'red','Hazardous':'darkred'},
 #                            color_continuous_scale='Portland'
                         )
      fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
