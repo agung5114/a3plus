@@ -50,11 +50,11 @@ with c1:
      option = st.selectbox('Select State', ['All']+df['State'].unique().tolist())
 
 #      df_sel = df[df['State']==option]
-     fig = px.choropleth(df, geojson=map, locations='GID_4', 
+     fig = px.choropleth(df, geojson=map, locations='District', 
                            color='Level',
                            featureidkey="properties.GID_4",
 #                            color_discrete_sequence=None, 
-                           color_discrete_map={'Good':'green','Fair':'yellow','Poor':'orange','Very Poor':'red','Hazardous':'darkred'},
+                           color_discrete_map={'Good':'lightgreen','Fair':'darkyellow','Poor':'orange','Very Poor':'darkorange','Hazardous':'darkred'},
 #                            color_continuous_scale='Portland'
                         )
      fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
