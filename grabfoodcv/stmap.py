@@ -46,22 +46,17 @@ c1,c2,c3 = st.columns((5,1,5))
 with c1:
      df = fetch_data('./grabfoodcv/aqi_jakarta.csv')
      st.dataframe(df[['State','Municipality','District','AQI','Level','GID_4']])
-#      dfall = fetch_data('./grabfoodcv/demand_jakarta.csv')
-     # dfall = pd.read_csv('./grabfoodcv/demand_jakarta.csv',dtype={"fips": str},sep=",")
-#      df = dfall[dfall['GID_2']!='IDN.7.6_1']
      df = df[df['State']!='KAB.ADM.KEP.SERIBU']
-#      option = st.selectbox('Select Month', df['bulan'].unique())
      option = st.selectbox('Select State', ['All']+df['State'].unique().tolist())
     
      if option=='All':
         df = df
      else:
         df = df[df['State']==option]
-     fig = px.choropleth(geojson=map, locations=df['GID_4'], 
-                           color='Level',
-                           featureidkey="properties.GID_4",
-#                            color_discrete_sequence=None, 
-                         text = df['District'], mode = 'text',  
+     fig = px.choropleth(df,geojson=map, locations='GID_4', 
+                         color='Level',
+                         featureidkey="properties.GID_4",
+                         hover_data='District',  
                          color_discrete_map={'Good':'green','Fair':'yellow','Poor':'orange','Very Poor':'red','Hazardous':'darkred'},
 #                            color_continuous_scale='Portland'
                         )
