@@ -50,9 +50,9 @@ with c1:
      option = st.selectbox('Select State', df['State'].unique())
 
 #      df_sel = df[df['State']==option]
-     fig = px.choropleth(df, geojson=map, locations='GID_4', 
+     fig = px.choropleth(df, geojson=map, locations='id', 
                            color='Level',
-                           featureidkey="properties.id",
+                           featureidkey="properties.GID_4",
                            color_discrete_sequence=None, 
                            color_discrete_map={},
                            color_continuous_scale='amp'
